@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Documents - Digitalis Imperium</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/documents.css">
+    <link rel="icon" href="img/digitalis logo.jpeg">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="company-logo">
+        <img src="img/digitalis logo.jpeg" class="logo-image">
+        <span class="company-name">DIGITALIS IMPERIUM</span>
+    </div>
+    <nav class="nav-links">
+        <a href="homepage.html" class="nav-item">Home</a>
+        <a href="documents.html" class="nav-item active">Documents</a>
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="profile.html" class="nav-item">Profile</a>
+        <a href="#" class="nav-item" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<main class="docs-content">
+    <div class="container">
+
+        <div class="welcome-box">
+            <h1>Request Documents</h1>
+            <p>Select the document you need and provide your reason for requesting it.</p>
+        </div>
+
+        <form id="docForm" class="docs-form">
+
+            <!-- STEP 1: SELECT DOCUMENT TYPE -->
+            <h3 style="color:#64ffda; margin-bottom:20px; font-size:1.1rem; letter-spacing:1px;">
+                STEP 1 — Select Document Type
+            </h3>
+
+            <div class="docs-grid">
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="barangay_clearance">
+                    <div class="card-content">
+                        <h3>Barangay Clearance</h3>
+                        <p>For ID, employment, or business purposes.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="certificate_residency">
+                    <div class="card-content">
+                        <h3>Certificate of Residency</h3>
+                        <p>Proof that you live in this barangay.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="certificate_indigency">
+                    <div class="card-content">
+                        <h3>Certificate of Indigency</h3>
+                        <p>For financial assistance or medical claims.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="business_permit">
+                    <div class="card-content">
+                        <h3>Business Permit</h3>
+                        <p>Legal permission to operate a business.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="barangay_id">
+                    <div class="card-content">
+                        <h3>Barangay ID</h3>
+                        <p>Official identification card.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="cedula">
+                    <div class="card-content">
+                        <h3>Community Tax Certificate (Cedula)</h3>
+                        <p>Annual community tax document.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="good_moral">
+                    <div class="card-content">
+                        <h3>Certificate of Good Moral Character</h3>
+                        <p>For school requirements or employment.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="facade_permit">
+                    <div class="card-content">
+                        <h3>Facade Permit</h3>
+                        <p>For renovation or exterior changes.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="blotter_clearance">
+                    <div class="card-content">
+                        <h3>Blotter Clearance</h3>
+                        <p>Proof that you have no pending cases.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="death_cert">
+                    <div class="card-content">
+                        <h3>Certificate of Death</h3>
+                        <p>Verification of death record.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="marriage_contract">
+                    <div class="card-content">
+                        <h3>Marriage Contract Verification</h3>
+                        <p>Proof of marital status.</p>
+                    </div>
+                </label>
+
+                <label class="doc-card">
+                    <input type="radio" name="document" value="transfer_residency">
+                    <div class="card-content">
+                        <h3>Transfer of Residency</h3>
+                        <p>Moving out to another barangay.</p>
+                    </div>
+                </label>
+
+            </div>
+
+            <!-- STEP 2: REASON / PURPOSE -->
+            <div style="margin-top:40px;">
+                <h3 style="color:#64ffda; margin-bottom:15px; font-size:1.1rem; letter-spacing:1px;">
+                    STEP 2 — State Your Reason / Purpose
+                </h3>
+                <textarea
+                    id="purposeInput"
+                    rows="4"
+                    placeholder="Example: I need this document for employment requirements at my new company."
+                    required
+                    style="
+                        width:100%;
+                        background:rgba(255,255,255,0.05);
+                        border:1px solid rgba(100,255,218,0.3);
+                        border-radius:10px;
+                        color:#ffffff;
+                        padding:15px;
+                        font-size:0.95rem;
+                        font-family:'Poppins', sans-serif;
+                        resize:vertical;
+                        outline:none;
+                        transition:border 0.3s;
+                        box-sizing:border-box;
+                    "
+                    onfocus="this.style.border='1px solid #64ffda'"
+                    onblur="this.style.border='1px solid rgba(100,255,218,0.3)'"
+                ></textarea>
+                <small style="color:#a8b2d1; margin-top:6px; display:block;">
+                    Please describe why you need this document. This helps the barangay process your request faster.
+                </small>
+            </div>
+
+            <!-- SUBMIT BUTTON -->
+            <div style="margin-top:30px; text-align:center;">
+                <button type="submit" id="submitBtn" class="btn-submit">
+                    Submit Request
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#" class="footer-item">Legal</a>
+        <a href="#" class="footer-item">IMPERIUM</a>
+        <a href="#" class="footer-item">About</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // ── CONFIG ────────────────────────────────────────────────
+  const API_BASE = 'https://barangay-eservice-api.onrender.com/api';
+
+  // ── AUTH GUARD ────────────────────────────────────────────
+  if (!localStorage.getItem('token')) {
+    alert('You need to log in to access this page.');
+    window.location.href = 'login.html';
+  }
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+
+  // ── SUBMIT HANDLER ────────────────────────────────────────
+  document.getElementById('docForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const selected = this.querySelector('input[name="document"]:checked');
+    if (!selected) {
+      alert('Please select a document type first.');
+      return;
+    }
+
+    const purpose = document.getElementById('purposeInput').value.trim();
+    if (!purpose) {
+      alert('Please state your reason for requesting this document.');
+      document.getElementById('purposeInput').focus();
+      return;
+    }
+
+    const btn = document.getElementById('submitBtn');
+    btn.disabled    = true;
+    btn.textContent = 'Submitting...';
+
+    try {
+      const res = await fetch(`${API_BASE}/requests`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${localStorage.getItem('token')}`
+        },
+        body: JSON.stringify({
+          documentType: selected.value,
+          purpose: purpose
+        })
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        alert(data.message || 'Failed to submit request. Please try again.');
+        btn.disabled    = false;
+        btn.textContent = 'Submit Request';
+        return;
+      }
+
+      alert('✅ Request submitted successfully! Redirecting to your dashboard...');
+      window.location.replace('dashboard.html');
+
+    } catch (err) {
+      alert('❌ Could not connect to the server. Please check your internet connection and try again.');
+      btn.disabled    = false;
+      btn.textContent = 'Submit Request';
+      console.error('Submit request error:', err);
+    }
+  });
+</script>
+
+</body>
+</html>

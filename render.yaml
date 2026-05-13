@@ -1,0 +1,25 @@
+services:
+  # ── BACKEND API ─────────────────────────────────────────────
+  - type: web
+    name: barangay-eservice-api
+    runtime: node
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: MONGO_URI
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+    # NOTE: Do NOT add PORT here. Render injects PORT automatically.
+
+  # ── FRONTEND STATIC SITE ────────────────────────────────────
+  - type: static
+    name: barangay-eservice
+    rootDir: frontend
+    buildCommand: ""
+    staticPublishPath: .
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html

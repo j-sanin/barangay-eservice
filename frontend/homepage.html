@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Barangay E-Service</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="img/digitalis logo.jpeg">
+</head>
+
+<body>
+
+<header class="navbar">
+    <div class="company-logo">
+        <img src="img/digitalis logo.jpeg" class="logo-image">
+        <span class="company-name">DIGITALIS IMPERIUM</span>
+    </div>
+
+    <nav class="nav-links">
+
+        <a href="#" class="nav-item active">Home</a>
+        <a href="documents.html" class="nav-item">Documents</a>
+        <a href="profile.html" class="nav-item">Profile</a>
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="#" class="nav-item" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<main class="hero-section">
+
+    <div class="content-left">
+        <h1>Barangay e-Services</h1>
+        <h2>Fast &amp; Convenient</h2>
+        <p>
+            Request barangay documents easily online. This system makes the process faster,
+            secure, and convenient for all residents.
+        </p>
+        <div class="cta-buttons">
+            <a href="documents.html" class="button trial-button">Request Document</a>
+            <a href="dashboard.html" class="button premium-button">My Dashboard</a>
+        </div>
+    </div>
+
+    <div class="content-right">
+        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2500">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="img/homepage.jpg" class="d-block w-100">
+                </div>
+                <div class="carousel-item">
+                    <img src="img/homepage2.jpg" class="d-block w-100">
+                </div>
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#" class="footer-item">Legal</a>
+        <a href="#" class="footer-item">IMPERIUM</a>
+        <a href="#" class="footer-item">About</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+
+  if (!localStorage.getItem('token')) {
+    window.location.href = 'index.html';
+  }
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
+</body>
+</html>

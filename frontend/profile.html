@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Digitalis Imperium</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+    <style>
+        :root {
+            --bg-color: #0a192f;
+            --card-bg: #112240;
+            --accent-teal: #64ffda;
+            --text-gray: #8892b0;
+            --success-green: #2ecc71;
+        }
+        body { background-color: var(--bg-color); color: white; font-family: 'Inter', sans-serif; }
+        .navbar { background-color: var(--bg-color); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #233554; }
+        .logo-image { height: 40px; margin-right: 10px; border-radius: 50%; }
+        .company-name { color: var(--accent-teal); font-weight: bold; letter-spacing: 2px; }
+        .nav-links .nav-item { color: white; text-decoration: none; margin-left: 20px; font-size: 0.9rem; }
+        .nav-item.active { color: var(--accent-teal); }
+        .profile-content { padding: 60px 0; }
+        .profile-card { background-color: var(--card-bg); border-radius: 12px; padding: 40px; max-width: 800px; margin: 0 auto; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .avatar-container { width: 120px; height: 120px; background: rgba(100,255,218,0.05); border: 3px solid var(--accent-teal); border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: var(--accent-teal); }
+        .profile-header { text-align: center; margin-bottom: 40px; }
+        .role-badge { background: rgba(100,255,218,0.1); color: var(--accent-teal); padding: 4px 12px; border-radius: 20px; font-size: 0.8rem; }
+        .section-title { color: var(--accent-teal); font-size: 1.2rem; margin-bottom: 25px; border-bottom: 1px solid #233554; padding-bottom: 10px; }
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
+        .info-item label { display: block; color: var(--text-gray); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px; }
+        .static-text { font-size: 1.1rem; margin: 0; display: block; min-height: 1.5rem; }
+        .edit-input { display: none; background: rgba(255,255,255,0.05); border: 1px solid var(--accent-teal); border-radius: 4px; color: white; padding: 8px; width: 100%; font-size: 1rem; outline: none; }
+        .btn-edit { width: 100%; background-color: var(--accent-teal); color: var(--bg-color); border: none; padding: 15px; border-radius: 4px; font-weight: bold; transition: 0.3s; cursor: pointer; margin-top: 10px; }
+        .btn-edit.save-state { background-color: var(--success-green); color: white; }
+        .footer { text-align: center; padding: 40px; border-top: 1px solid #233554; margin-top: 40px; }
+        .footer-item { color: var(--text-gray); text-decoration: none; margin: 0 10px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<header class="navbar">
+    <div class="company-logo">
+        <span class="company-name">DIGITALIS IMPERIUM</span>
+    </div>
+    <nav class="nav-links">
+        <a href="homepage.html" class="nav-item">Home</a>
+        <a href="documents.html" class="nav-item">Documents</a>
+        <a href="profile.html" class="nav-item active">Profile</a>
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="#" class="nav-item" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<main class="profile-content">
+    <div class="container">
+        <div class="profile-card">
+
+            <div class="profile-header">
+                <div class="avatar-container">
+                    <i class="fa-solid fa-circle-user"></i>
+                </div>
+                <!-- Populated from backend by profile.js -->
+                <h1 class="profile-name" id="displayName">Loading...</h1>
+                <span class="role-badge" id="displayRole">USER</span>
+            </div>
+
+            <div class="profile-body">
+                <h3 class="section-title">Personal Information</h3>
+
+                <div class="info-grid">
+                    <div class="info-item">
+                        <label>Full Name</label>
+                        <!-- static-text shows the value; edit-input is shown when editing -->
+                        <p class="static-text" id="profileName">—</p>
+                        <input type="text" class="edit-input" id="inputName" placeholder="Full Name">
+                    </div>
+
+                    <div class="info-item">
+                        <label>Email</label>
+                        <p class="static-text" id="profileEmail">—</p>
+                        <input type="email" class="edit-input" id="inputEmail" placeholder="Email">
+                    </div>
+
+                    <div class="info-item">
+                        <label>Address</label>
+                        <p class="static-text">—</p>
+                        <input type="text" class="edit-input" placeholder="Address">
+                    </div>
+
+                    <div class="info-item">
+                        <label>Contact Number</label>
+                        <p class="static-text">—</p>
+                        <input type="text" class="edit-input" placeholder="Contact Number">
+                    </div>
+                </div>
+
+                <button class="btn-edit" id="editBtn" onclick="toggleEdit()">Edit Profile</button>
+            </div>
+
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#" class="footer-item">Legal</a>
+        <a href="#" class="footer-item">IMPERIUM</a>
+        <a href="#" class="footer-item">About</a>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/profile.js"></script>
+<script>
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'login.html';
+  }
+</script>
+</body>
+</html>

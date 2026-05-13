@@ -1,0 +1,183 @@
+/* --- IMPORT FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap');
+
+/* --- GLOBAL STYLES TO PUSH FOOTER DOWN --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', 'Open Sans', sans-serif;
+    background-color: #0a192f; /* Night Blue Background */
+    color: #ffffff;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #64ffda;
+}
+
+.company-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-item {
+    color: #ccd6f6 !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #64ffda !important;
+}
+
+/* --- MAIN CONTENT (ADDS SPACE AND PUSHES FOOTER DOWN) --- */
+.track-content {
+    flex: 1; /* THIS IS THE MAGIC! */
+    padding: 60px 60px; /* MORE SPACE ON TOP AND SIDES */
+}
+
+.welcome-box {
+    margin-bottom: 40px; /* SPACE BETWEEN TEXT AND TABLE */
+}
+
+.welcome-box h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.welcome-box p {
+    font-size: 16px;
+    color: #a8b2d1;
+}
+
+/* --- TABLE STYLES --- */
+.track-table-container {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    overflow-x: auto;
+}
+
+.track-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.track-table thead {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.track-table th {
+    color: #64ffda;
+    text-align: left;
+    padding: 18px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.track-table td {
+    color: #ffffff;
+    padding: 18px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.track-table tbody tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* STATUS COLORS */
+.status {
+    padding: 6px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.status.approved {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: #64ffda;
+}
+
+.status.pending {
+    background-color: rgba(255, 215, 0, 0.1);
+    color: #ffd700;
+}
+
+.status.completed {
+    background-color: rgba(110, 168, 255, 0.1);
+    color: #6ea8fe;
+}
+
+/* --- FOOTER --- */
+.footer {
+    padding: 20px 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto; /* STICKS TO BOTTOM */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-item {
+    color: #a8b2d1;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.footer-item:hover {
+    color: #64ffda;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .track-content {
+        padding: 30px 20px;
+    }
+    .navbar {
+        padding: 20px;
+    }
+}

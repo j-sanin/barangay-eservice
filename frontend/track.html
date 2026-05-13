@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Request - Barangay E-Service</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/track.css">
+    <link rel="icon" href="img/digitalis logo.jpeg">
+</head>
+<body>
+
+<header class="navbar">
+    <div class="company-logo">
+        <img src="img/digitalis logo.jpeg" class="logo-image">
+        <span class="company-name">DIGITALIS IMPERIUM</span>
+    </div>
+    <nav class="nav-links">
+        <a href="homepage.html" class="nav-item">Home</a>
+        <a href="documents.html" class="nav-item">Documents</a>
+        <a href="profile.html" class="nav-item">Profile</a>
+        <a href="dashboard.html" class="nav-item">Dashboard</a>
+        <a href="#" class="nav-item active">Track</a>
+        <a href="#" class="nav-item" onclick="logout()">Logout</a>
+    </nav>
+</header>
+
+<main class="track-content">
+    <div class="container">
+        <div class="welcome-box">
+            <h1>Track Your Request</h1>
+            <p>See the live status of your submitted document requests.</p>
+        </div>
+
+        <div class="track-table-container">
+            <table class="track-table">
+                <thead>
+                    <tr>
+                        <th>Document Type</th>
+                        <!-- FIX: added Purpose column -->
+                        <th>Purpose / Reason</th>
+                        <th>Date Requested</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="requestTableBody">
+                    <tr>
+                        <td colspan="4" class="text-center">Loading your requests...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="footer-links">
+        <a href="#" class="footer-item">Legal</a>
+        <a href="#" class="footer-item">IMPERIUM</a>
+        <a href="#" class="footer-item">About</a>
+    </div>
+</footer>
+
+<script src="js/dashboard.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    if (!localStorage.getItem('token')) {
+      alert('You need to log in to access this page.');
+      window.location.href = 'login.html';
+    }
+  });
+
+  function logout() {
+    localStorage.clear();
+    window.location.href = 'index.html';
+  }
+</script>
+</body>
+</html>

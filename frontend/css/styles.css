@@ -1,0 +1,219 @@
+/* --- IMPORT FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap');
+
+/* --- GLOBAL STYLES --- */
+body {
+    font-family: 'Poppins', 'Open Sans', sans-serif;
+    background-color: #0a192f; /* Night Blue Background */
+    color: #ffffff;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap; /* Allows wrapping if screen is too small */
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #64ffda;
+}
+
+.company-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-item {
+    color: #ccd6f6 !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    white-space: nowrap; /* Prevents text from splitting */
+}
+
+.nav-item:hover {
+    color: #64ffda !important;
+}
+
+/* --- HERO SECTION --- */
+.hero-section {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 85vh;
+    padding: 40px 60px;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+
+/* LEFT CONTENT */
+.content-left {
+    flex: 1;
+    max-width: 550px;
+}
+
+.content-left h1 {
+    font-size: 58px; /* BIGGER FONT */
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    white-space: nowrap; /* THIS KEEPS "e-Services" IN ONE LINE */
+}
+
+.content-left h2 {
+    font-size: 32px; /* BIGGER FONT */
+    font-weight: 600;
+    color: #64ffda; /* Turquoise */
+    margin-bottom: 25px;
+}
+
+.content-left p {
+    font-size: 18px;
+    color: #a8b2d1;
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+/* BUTTONS */
+.cta-buttons {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.button {
+    padding: 15px 35px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.trial-button {
+    background-color: #64ffda;
+    color: #0a192f;
+}
+
+.trial-button:hover {
+    background-color: #52d1b2;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(100, 255, 218, 0.2);
+    color: #0a192f;
+}
+
+.premium-button {
+    background-color: transparent;
+    color: #64ffda;
+    border: 2px solid #64ffda !important;
+}
+
+.premium-button:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+    transform: translateY(-3px);
+    color: #64ffda;
+}
+
+/* RIGHT CAROUSEL */
+.content-right {
+    flex: 1;
+    max-width: 600px;
+}
+
+.carousel {
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+}
+
+/* --- FOOTER --- */
+.footer {
+    padding: 20px 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-item {
+    color: #a8b2d1;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.footer-item:hover {
+    color: #64ffda;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 992px) {
+    .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .content-left h1 {
+        font-size: 42px;
+        white-space: normal; /* Allows wrapping only on very small phones */
+    }
+    .content-left h2 {
+        font-size: 26px;
+    }
+    .cta-buttons {
+        justify-content: center;
+    }
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+        padding: 20px;
+    }
+    .nav-links {
+        gap: 15px;
+    }
+}

@@ -1,0 +1,193 @@
+/* --- IMPORT FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Open+Sans&display=swap');
+
+/* --- GLOBAL STYLES TO PUSH FOOTER DOWN --- */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Poppins', 'Open Sans', sans-serif;
+    background-color: #0a192f; /* Night Blue Background */
+    color: #ffffff;
+}
+
+/* --- NAVBAR --- */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 60px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+}
+
+.company-logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-image {
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #64ffda;
+}
+
+.company-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.nav-item {
+    color: #ccd6f6 !important;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.nav-item:hover, .nav-item.active {
+    color: #64ffda !important;
+}
+
+/* --- MAIN CONTENT (TAKES ALL SPACE) --- */
+.dashboard-content {
+    flex: 1; /* THIS IS THE MAGIC! Pushes footer down */
+    padding: 40px 60px;
+}
+
+.welcome-box h1 {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.welcome-box p {
+    font-size: 16px;
+    color: #a8b2d1;
+    margin-bottom: 30px;
+}
+
+/* STATUS CARDS */
+.stats-row {
+    margin-bottom: 40px;
+}
+
+.stat-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 25px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    border-color: #64ffda;
+}
+
+.stat-card h3 {
+    font-size: 16px;
+    color: #ccd6f6;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.stat-card .number {
+    font-size: 40px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 0;
+}
+
+.stat-card .number.yellow { color: #ffd700; }
+.stat-card .number.green { color: #64ffda; }
+.stat-card .number.blue { color: #6ea8fe; }
+
+/* --- FOOTER --- */
+.footer {
+    padding: 20px 60px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    /* Footer stays at bottom */
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.footer-item {
+    color: #a8b2d1;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.footer-item:hover {
+    color: #64ffda;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .dashboard-content {
+        padding: 20px;
+    }
+    .navbar {
+        padding: 20px;
+    }
+}
+
+/* ==========================================
+✅ NEW STYLES ADDED HERE ONLY — NO OTHER CHANGES
+========================================== */
+
+/* Status Badge Styles (match admin) */
+.status-badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+}
+.status-badge.pending {
+    background: rgba(255, 193, 7, 0.15);
+    color: #ffc107;
+    border: 1px solid #ffc107;
+}
+.status-badge.approved {
+    background: rgba(100, 255, 218, 0.15);
+    color: #64ffda;
+    border: 1px solid #64ffda;
+}
+
+/* Release Date Display */
+.release-date {
+    color: #64ffda;
+    font-weight: 600;
+}
+
+/* Not set yet text */
+.no-date {
+    color: #ffc107;
+    font-style: italic;
+    font-size: 13px;
+}
