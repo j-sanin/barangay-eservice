@@ -159,11 +159,13 @@ const updateProfile = async (req, res) => {
   try {
     const user = await User.findById(req.user.id);
     if (!user) return res.status(404).json({ message: 'User not found.' });
-    const { name, email } = req.body;
-    if (name)  user.name  = name;
-    if (email) user.email = email;
+    const { name, email, address, phone } = req.body;
+    if (name)    user.name    = name;
+    if (email)   user.email   = email;
+    if (address) user.address = address;
+    if (phone)   user.phone   = phone;
     await user.save();
-    res.json({ message: 'Profile updated.', name: user.name, email: user.email });
+    res.json({ message: 'Profile updated.', name: user.name, email: user.email, address: user.address, phone: user.phone });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

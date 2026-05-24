@@ -78,8 +78,12 @@ async function toggleEdit() {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         },
-        body: JSON.stringify({ name: newName, email: newEmail })
-      });
+        body: JSON.stringify({ 
+          name: newName, 
+          email: newEmail,
+          address: document.getElementById('inputAddress')?.value.trim() || '',
+          phone: document.getElementById('inputPhone')?.value.trim() || ''
+        })
 
       const data = await res.json();
 
