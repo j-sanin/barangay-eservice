@@ -1,7 +1,9 @@
 // js/register.js — Handles registration form submission
 
-const API_BASE = 'http://192.168.56.1:5000/api';
-
+const API_BASE = window.location.hostname === 'localhost'
+  ? 'http://localhost:5000/api'
+  : 'https://your-render-app-name.onrender.com/api';
+  
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');
   if (!form) return;
