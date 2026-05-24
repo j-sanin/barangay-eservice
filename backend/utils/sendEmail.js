@@ -1,12 +1,11 @@
-const Brevo = require('@getbrevo/brevo');
-
-const apiInstance = new Brevo.TransactionalEmailsApi();
+const SibApiV3Sdk = require('@getbrevo/brevo');
+const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
 
 const sendOTPEmail = async (toEmail, otpCode) => {
   const expiryMinutes = process.env.OTP_EXPIRY_MINUTES || 10;
 
-  const sendSmtpEmail = new Brevo.SendSmtpEmail();
+const sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();  
   sendSmtpEmail.subject = 'Your Barangay E-Service Login Code';
   sendSmtpEmail.htmlContent = `
     <div style="font-family: Arial, sans-serif; max-width: 480px; margin: auto;">
