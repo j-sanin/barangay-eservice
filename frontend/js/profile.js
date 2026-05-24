@@ -1,3 +1,10 @@
+// js/profile.js — Profile edit/save with real backend API call
+
+function logout() {
+  localStorage.clear();
+  window.location.href = 'login.html';
+}
+
 // Load profile data from backend when page loads
 async function loadProfile() {
   const token = localStorage.getItem('token');
