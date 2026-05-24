@@ -1,6 +1,6 @@
 // js/profile.js — Profile edit/save with real backend API call
 
-const API_BASE = 'https://barangay-eservice-api.onrender.com/api';
+const API_BASE = 'http://localhost:5000/api';
 
 // Load profile data from backend when page loads
 async function loadProfile() {

@@ -1,18 +1,26 @@
-const API_BASE = 'https://barangay-eservice-api.onrender.com/api';
+const API_BASE = 'http://192.168.56.1:5000/api';
 let dashboardLoaded = false;
 
+// ✅ PROTECT PAGE — check token and role
+const userRole = localStorage.getItem('userRole');
+const token = localStorage.getItem('token');
+
+if (!token) {
+    window.location.href = 'login.html';
+}
 // ── AUTH HELPERS ─────────────────────────────────────────────
 function getToken() {
   return localStorage.getItem('token');
 }
 
 function authHeaders() {
+  console.log("TOKEN:", getToken());
+
   return {
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${getToken()}`
   };
 }
-
 // ── FETCH WRAPPER ─────────────────────────────────────────────
 async function fetchData(endpoint) {
   try {
@@ -222,10 +230,7 @@ function buildReleaseDateCell(req) {
   }
 
   const currentDate = req.releaseDate || '';
-  return `
-    <input type="date" class="release-date-input" id="date_${req._id}" value="${currentDate}">
-    <button class="btn-save-date" onclick="saveReleaseDate('${req._id}')">Save</button>
-  `;
+  return `<div style="display:flex; align-items:center; gap:6px;"><input type="date" class="release-date-input" id="date_${req._id}" value="${currentDate}"><button class="btn-save-date" onclick="saveReleaseDate('${req._id}')">Save</button></div>`;
 }
 
 // ── ACTION BUTTONS ────────────────────────────────────────────

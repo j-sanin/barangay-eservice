@@ -13,7 +13,7 @@ html, body {
     color: #ffffff;
 }
 
-/* --- NAVBAR --- */
+/* --- NAVBAR — EXACT SPACING & ALIGNMENT --- */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -54,15 +54,16 @@ html, body {
 }
 
 .nav-item {
-    color: #ccd6f6;
+    color: #ccd6f6 !important;
     text-decoration: none;
     font-weight: 500;
     font-size: 15px;
     transition: color 0.3s ease;
+    white-space: nowrap;
 }
 
-.nav-item:hover, .nav-item.active {
-    color: #64ffda;
+.nav-item:hover {
+    color: #64ffda !important;
 }
 
 /* --- MAIN CONTENT --- */
@@ -107,7 +108,7 @@ html, body {
 }
 
 .doc-card input {
-    display: none; /* Hide the actual radio button */
+    display: none;
 }
 
 .card-content h3 {
@@ -129,7 +130,7 @@ html, body {
     transform: translateY(-5px);
 }
 
-/* --- SELECTED EFFECT (THIS IS WHAT YOU WANTED!) --- */
+/* --- SELECTED CARD EFFECT --- */
 .doc-card:has(input:checked) {
     border-color: #64ffda;
     background-color: rgba(100, 255, 218, 0.15);
@@ -187,12 +188,12 @@ html, body {
     color: #64ffda;
 }
 
-/* RESPONSIVE */
+/* --- RESPONSIVE --- */
 @media (max-width: 768px) {
     .docs-content {
         padding: 30px 20px;
     }
     .navbar {
-        padding: 20px;
+        padding: 8px 20px;
     }
 }

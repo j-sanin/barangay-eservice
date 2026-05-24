@@ -1,6 +1,6 @@
 // js/register.js — Handles registration form submission
 
-const API_BASE = 'https://barangay-eservice-api.onrender.com/api';
+const API_BASE = 'http://192.168.56.1:5000/api';
 
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');

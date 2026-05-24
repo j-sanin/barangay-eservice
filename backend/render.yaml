@@ -7,16 +7,18 @@ services:
     buildCommand: npm install
     startCommand: npm start
     envVars:
+      - key: PORT
+        value: 5000
       - key: MONGO_URI
-        sync: false
+        sync: false          # Set this manually in Render dashboard
       - key: JWT_SECRET
-        sync: false
+        sync: false          # Set this manually in Render dashboard
 
   # ── FRONTEND STATIC SITE ────────────────────────────────────
   - type: static
     name: barangay-eservice
     rootDir: frontend
-    buildCommand: ""
+    buildCommand: ""         # No build step needed for plain HTML
     staticPublishPath: .
     routes:
       - type: rewrite

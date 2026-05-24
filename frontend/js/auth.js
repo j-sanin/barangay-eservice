@@ -1,6 +1,6 @@
 // js/auth.js — Auth helper used by protected pages
 
-const API_BASE =  'https://barangay-eservice-api.onrender.com/api';
+const API_BASE = 'http://192.168.56.1:5000/api';
 
 function getToken() {
   return localStorage.getItem('token');

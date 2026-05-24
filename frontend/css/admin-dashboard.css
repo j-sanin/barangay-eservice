@@ -225,3 +225,20 @@ html, body {
     color: #64ffda;
     font-weight: 600;
 }
+/* Fix Action Buttons Alignment */
+.admin-table td {
+    vertical-align: middle;
+}
+
+.action-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 200px;
+}
+.admin-table th:last-child,
+.admin-table td:last-child {
+    width: 1%;
+    white-space: nowrap;
+    text-align: center;
+}

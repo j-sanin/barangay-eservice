@@ -1,0 +1,79 @@
+.admin-tabs {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.admin-tab-btn {
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.05);
+    color: #a8b2d1;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.admin-tab-btn:hover {
+    border-color: #ff6363;
+    color: #ff6363;
+}
+
+.admin-tab-btn.active {
+    background: rgba(255, 99, 99, 0.15);
+    border-color: #ff6363;
+    color: #ff6363;
+}
+
+#usersPanel {
+    display: none;
+}
+
+#usersPanel.active {
+    display: block;
+}
+
+#requestsPanel.hidden {
+    display: none;
+}
+
+.users-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.users-table th {
+    color: #ff6363;
+    text-align: left;
+    padding: 15px;
+    border-bottom: 2px solid rgba(255,255,255,0.1);
+}
+
+.users-table td {
+    padding: 15px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    color: #fff;
+    font-size: 14px;
+}
+.admin-table td {
+    vertical-align: middle !important;
+}
+
+#requestsPanel {
+    display: block;
+}
+
+#requestsPanel.hidden {
+    display: none;
+}
+.admin-table td {
+    vertical-align: middle !important;
+    white-space: nowrap;
+}
+
+.admin-table td:nth-child(3),
+.admin-table td:nth-child(7) {
+    white-space: normal;
+}

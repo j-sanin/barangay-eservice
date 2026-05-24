@@ -1,10 +1,14 @@
-const jwt  = require('jsonwebtoken');
-const User = require('../models/User');
+const jwt    = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
+const User   = require('../models/User');
+const { sendOTPEmail } = require('../utils/sendEmail');
 
 const generateToken = (id) =>
-  jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '3d' });
 
-// @POST /api/auth/register
+const generateOTP = () =>
+  Math.floor(100000 + Math.random() * 900000).toString();
+
 const register = async (req, res) => {
   const { name, email, password, role } = req.body;
   try {
@@ -16,6 +20,7 @@ const register = async (req, res) => {
       return res.status(400).json({ message: 'Email already registered.' });
 
     const user = await User.create({ name, email, password, role });
+
     res.status(201).json({
       _id:   user._id,
       name:  user.name,
@@ -28,7 +33,6 @@ const register = async (req, res) => {
   }
 };
 
-// @POST /api/auth/login
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -38,6 +42,51 @@ const login = async (req, res) => {
     const user = await User.findOne({ email });
     if (!user || !(await user.matchPassword(password)))
       return res.status(401).json({ message: 'Invalid email or password.' });
+
+    const otp       = generateOTP();
+    const otpExpiry = new Date(Date.now() + (process.env.OTP_EXPIRY_MINUTES || 10) * 60 * 1000);
+    const salt      = await bcrypt.genSalt(10);
+
+    user.otpCode   = await bcrypt.hash(otp, salt);
+    user.otpExpiry = otpExpiry;
+    await user.save();
+
+    await sendOTPEmail(user.email, otp);
+
+    res.json({ message: 'OTP sent to your email. It expires in 10 minutes.' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+const verifyOtp = async (req, res) => {
+  const { email, otp } = req.body;
+  try {
+    if (!email || !otp)
+      return res.status(400).json({ message: 'Email and OTP are required.' });
+
+    const user = await User.findOne({ email });
+    if (!user)
+      return res.status(404).json({ message: 'User not found.' });
+
+    if (!user.otpCode || !user.otpExpiry)
+      return res.status(400).json({ message: 'No OTP requested. Please login first.' });
+
+    if (new Date() > user.otpExpiry) {
+      user.otpCode   = null;
+      user.otpExpiry = null;
+      await user.save();
+      return res.status(400).json({ message: 'OTP has expired. Please login again.' });
+    }
+
+    const isMatch = await bcrypt.compare(otp, user.otpCode);
+    if (!isMatch)
+      return res.status(401).json({ message: 'Invalid OTP. Please try again.' });
+
+    user.otpCode    = null;
+    user.otpExpiry  = null;
+    user.isVerified = true;
+    await user.save();
 
     res.json({
       _id:   user._id,
@@ -51,4 +100,30 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+const resendOtp = async (req, res) => {
+  const { email } = req.body;
+  try {
+    if (!email)
+      return res.status(400).json({ message: 'Email is required.' });
+
+    const user = await User.findOne({ email });
+    if (!user)
+      return res.status(404).json({ message: 'User not found.' });
+
+    const otp       = generateOTP();
+    const otpExpiry = new Date(Date.now() + (process.env.OTP_EXPIRY_MINUTES || 10) * 60 * 1000);
+    const salt      = await bcrypt.genSalt(10);
+
+    user.otpCode   = await bcrypt.hash(otp, salt);
+    user.otpExpiry = otpExpiry;
+    await user.save();
+
+    await sendOTPEmail(user.email, otp);
+
+    res.json({ message: 'New OTP sent to your email.' });
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+module.exports = { register, login, verifyOtp, resendOtp };
