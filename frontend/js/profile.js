@@ -42,8 +42,16 @@ async function loadProfile() {
     // Pre-fill hidden inputs with current values
     const inputName  = document.getElementById('inputName');
     const inputEmail = document.getElementById('inputEmail');
-    if (inputName)  inputName.value  = user.name  || '';
-    if (inputEmail) inputEmail.value = user.email || '';
+    const inputAddress = document.getElementById('inputAddress');
+const inputPhone = document.getElementById('inputPhone');
+if (inputAddress) inputAddress.value = user.address || '';
+if (inputPhone) inputPhone.value = user.phone || '';
+
+// Display fields
+const profileAddress = document.getElementById('profileAddress');
+const profilePhone = document.getElementById('profilePhone');
+if (profileAddress) profileAddress.textContent = user.address || '—';
+if (profilePhone) profilePhone.textContent = user.phone || '—';
 
   } catch (err) {
     console.error('loadProfile error:', err);
