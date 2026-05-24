@@ -1,20 +1,4 @@
-const { Resend } = require('resend');
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-const sendOTPEmail = async (toEmail, otpCode) => {
-  const expiryMinutes = process.env.OTP_EXPIRY_MINUTES || 10;
-  
-  console.log('Sending email to:', toEmail);
-  console.log('API Key exists:', !!process.env.RESEND_API_KEY);
-
-  const result = await resend.emails.send({
-    from: 'onboarding@resend.dev',
-    to: toEmail,
-    subject: 'Your Barangay E-Service Login Code',
-    html: `<p>Your OTP is: <strong>${otpCode}</strong></p>`,
-  });
-  
-  console.log('Resend result:', JSON.stringify(result));const Brevo = require('@getbrevo/brevo');
+const Brevo = require('@getbrevo/brevo');
 
 const apiInstance = new Brevo.TransactionalEmailsApi();
 apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
@@ -41,9 +25,6 @@ const sendOTPEmail = async (toEmail, otpCode) => {
   console.log('Sending email to:', toEmail);
   const result = await apiInstance.sendTransacEmail(sendSmtpEmail);
   console.log('Email sent:', JSON.stringify(result));
-};
-
-module.exports = { sendOTPEmail };
 };
 
 module.exports = { sendOTPEmail };
