@@ -40,18 +40,20 @@ async function loadProfile() {
     if (displayRole)  displayRole.textContent  = (user.role || 'resident').toUpperCase();
 
     // Pre-fill hidden inputs with current values
-    const inputName  = document.getElementById('inputName');
+    const inputName = document.getElementById('inputName');
     const inputEmail = document.getElementById('inputEmail');
     const inputAddress = document.getElementById('inputAddress');
-const inputPhone = document.getElementById('inputPhone');
-if (inputAddress) inputAddress.value = user.address || '';
-if (inputPhone) inputPhone.value = user.phone || '';
+    const inputContact = document.getElementById('inputContact');
+    if (inputName) inputName.value = user.name || '';
+    if (inputEmail) inputEmail.value = user.email || '';
+    if (inputAddress) inputAddress.value = user.address || '';
+    if (inputContact) inputContact.value = user.phone || '';
 
-// Display fields
-const profileAddress = document.getElementById('profileAddress');
-const profilePhone = document.getElementById('profilePhone');
-if (profileAddress) profileAddress.textContent = user.address || '—';
-if (profilePhone) profilePhone.textContent = user.phone || '—';
+    // Display fields
+    const profileAddress = document.getElementById('profileAddress');
+    const profileContact = document.getElementById('profileContact');
+    if (profileAddress) profileAddress.textContent = user.address || '—';
+    if (profileContact) profileContact.textContent = user.phone || '—';
 
   } catch (err) {
     console.error('loadProfile error:', err);
@@ -90,7 +92,7 @@ async function toggleEdit() {
           name: newName, 
           email: newEmail,
           address: document.getElementById('inputAddress')?.value.trim() || '',
-          phone: document.getElementById('inputPhone')?.value.trim() || ''
+          phone: document.getElementById('inputContact')?.value.trim() || ''
         })
       });
 
