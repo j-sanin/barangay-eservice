@@ -92,6 +92,7 @@ async function toggleEdit() {
           address: document.getElementById('inputAddress')?.value.trim() || '',
           phone: document.getElementById('inputPhone')?.value.trim() || ''
         })
+      });
 
       const data = await res.json();
 
