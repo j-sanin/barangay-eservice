@@ -1,5 +1,3 @@
-// API_BASE is already declared in dashboard.js — removed to avoid duplicate error
-
 let allUsers = []; // store all fetched users for search filtering
 
 document.addEventListener('DOMContentLoaded', function () {
