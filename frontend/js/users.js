@@ -38,7 +38,7 @@ function switchTab(tab) {
 
 async function loadUsers() {
     const tbody = document.getElementById('usersTableBody');
-    tbody.innerHTML = <tr><td colspan="4" style="padding:25px; text-align:center; color:#a8b2d1;">Loading users...</td></tr>;
+    tbody.innerHTML = `<tr><td colspan="4" style="padding:25px; text-align:center; color:#a8b2d1;">Loading users...</td></tr>`;
 
     try {
         const token = localStorage.getItem('token');
@@ -48,12 +48,12 @@ async function loadUsers() {
         const data  = await res.json();
 
         if (!res.ok) {
-            tbody.innerHTML = <tr><td colspan="4" style="padding:25px; text-align:center; color:#ff6363;">${data.message || 'Failed to load users.'}</td></tr>;
+            tbody.innerHTML = `<tr><td colspan="4" style="padding:25px; text-align:center; color:#ff6363;">${data.message || 'Failed to load users.'}</td></tr>`;
             return;
         }
 
         if (!data.length) {
-            tbody.innerHTML = <tr><td colspan="4" style="padding:25px; text-align:center; color:#a8b2d1;">No users found.</td></tr>;
+            tbody.innerHTML = `<tr><td colspan="4" style="padding:25px; text-align:center; color:#a8b2d1;">No users found.</td></tr>`;
             return;
         }
 
@@ -61,7 +61,7 @@ async function loadUsers() {
         renderUsers(allUsers);
 
     } catch (err) {
-        tbody.innerHTML = <tr><td colspan="4" style="padding:25px; text-align:center; color:#ff6363;">Cannot connect to server.</td></tr>;
+        tbody.innerHTML = `<tr><td colspan="4" style="padding:25px; text-align:center; color:#ff6363;">Cannot connect to server.</td></tr>`;
         console.error('Users load error:', err);
     }
 }
@@ -70,7 +70,7 @@ function renderUsers(list) {
     const tbody = document.getElementById('usersTableBody');
 
     if (!list.length) {
-        tbody.innerHTML = <tr><td colspan="4" style="padding:25px; text-align:center; color:#a8b2d1;">No users found.</td></tr>;
+        tbody.innerHTML = `<tr><td colspan="4" style="padding:25px; text-align:center; color:#a8b2d1;">No users found.</td></tr>`;
         return;
     }
 
