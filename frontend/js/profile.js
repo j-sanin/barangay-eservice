@@ -105,7 +105,7 @@ async function toggleEdit() {
         return;
       }
 
-      // Update display with saved values
+     // Update display with saved values
       const displayName  = document.getElementById('displayName');
       const profileName  = document.getElementById('profileName');
       const profileEmail = document.getElementById('profileEmail');
@@ -113,6 +113,11 @@ async function toggleEdit() {
       if (displayName)  displayName.textContent  = data.name;
       if (profileName)  profileName.textContent  = data.name;
       if (profileEmail) profileEmail.textContent = data.email;
+
+      const profileAddress = document.getElementById('profileAddress');
+      const profileContact = document.getElementById('profileContact');
+      if (profileAddress) profileAddress.textContent = data.address || '—';
+      if (profileContact) profileContact.textContent = data.phone || '—';
 
       // Also update localStorage name
       localStorage.setItem('userName', data.name);
