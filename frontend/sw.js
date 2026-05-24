@@ -1,4 +1,4 @@
-const CACHE_NAME = 'barangay-eservice-v3';
+const CACHE_NAME = 'barangay-eservice-v4';
 
 const urlsToCache = [
   '/index.html',
