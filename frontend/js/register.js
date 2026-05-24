@@ -2,8 +2,8 @@
 
 const API_BASE = window.location.hostname === 'localhost'
   ? 'http://localhost:5000/api'
-  : 'https://your-render-app-name.onrender.com/api';
-  
+  : 'https://barangay-eservice-backend.onrender.com/api';
+
 document.addEventListener('DOMContentLoaded', function () {
   const form = document.querySelector('form');
   if (!form) return;
