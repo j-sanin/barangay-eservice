@@ -1,4 +1,4 @@
-const CACHE_NAME = 'barangay-eservice-v4';
+const CACHE_NAME = 'barangay-eservice-v5';
 
 const urlsToCache = [
   '/index.html',
@@ -6,7 +6,6 @@ const urlsToCache = [
   '/register.html',
   '/dashboard.html',
   '/documents.html',
-  '/request.html',
   '/track.html',
   '/profile.html',
   '/offline.html',
@@ -15,8 +14,6 @@ const urlsToCache = [
   '/css/dashboard.css',
   '/css/documents.css',
   '/css/register.css',
-  '/css/request.css',
-  '/css/track.css',
   '/css/profile.css',
   '/icon.png',
   '/manifest.json'
@@ -25,10 +22,7 @@ const urlsToCache = [
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME)
-      .then(cache => {
-        console.log('Barangay E-Service: Caching app files...');
-        return cache.addAll(urlsToCache);
-      })
+      .then(cache => cache.addAll(urlsToCache))
   );
   self.skipWaiting();
 });
@@ -47,12 +41,16 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', event => {
+  // Never cache JS files - always fetch fresh
+  if (event.request.url.includes('.js')) {
+    event.respondWith(fetch(event.request));
+    return;
+  }
+
   event.respondWith(
     caches.match(event.request)
       .then(response => {
-        if (response) {
-          return response;
-        }
+        if (response) return response;
         return fetch(event.request).catch(() => {
           return caches.match('/offline.html');
         });
